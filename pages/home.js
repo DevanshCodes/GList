@@ -2,7 +2,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon1 from 'react-native-vector-icons/Ionicons';
 import React, {Component} from 'react';
 import {FAB, Card, Button, ProgressBar} from 'react-native-paper';
-
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,13 +10,8 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Avatar, Accessory} from 'react-native-elements';
-
-// const onStateChange = () => {
-//   this.setState({open:true});
-// }
+import {Avatar} from 'react-native-elements';
 
 class Home extends Component {
   constructor(props) {
