@@ -1,5 +1,4 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon1 from 'react-native-vector-icons/Ionicons';
 import React, {Component} from 'react';
 import {FAB, Card, Button, ProgressBar} from 'react-native-paper';
 import {
@@ -12,6 +11,9 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Avatar} from 'react-native-elements';
+import ListCard from '../components/ListCard';
+import GroupCard from '../components/GroupCard';
+import TabButtons from '../components/TabButtons';
 
 class Home extends Component {
   constructor(props) {
@@ -46,101 +48,15 @@ class Home extends Component {
               <Text style={styles.listsText}>Lists</Text>
               <Icon name="long-arrow-right" size={30} color="#FABB18" />
             </View>
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}>
-              <View style={styles.tabButtons}>
-                <Button
-                  mode="text"
-                  color="#FABB18"
-                  onPress={() => console.log('Pressed')}>
-                  Active
-                </Button>
-                <Button
-                  mode="text"
-                  color="#FABB18"
-                  onPress={() => console.log('Pressed')}>
-                  Starred
-                </Button>
-                <Button
-                  mode="text"
-                  color="#FABB18"
-                  onPress={() => console.log('Pressed')}>
-                  Personal
-                </Button>
-                <Button
-                  mode="text"
-                  color="#FABB18"
-                  onPress={() => console.log('Pressed')}>
-                  Completed
-                </Button>
-              </View>
-            </ScrollView>
+            <TabButtons />
             <View>
-              <Card style={styles.card}>
-                <ProgressBar
-                  progress={0.75}
-                  color="#FABB18"
-                  style={styles.progressbar}
-                />
-                <View style={styles.cardInterior}>
-                  {/* <Card.Title title="Veggies Bitches!" subtitle="1 Day ago" /> */}
-                  <View>
-                    <Text style={styles.cardHeading}>Veggies Bitches!</Text>
-                    <Text style={styles.cardHeadingSub}>2 Years ago</Text>
-                  </View>
-                  <Icon1
-                    name="bookmark-outline"
-                    size={25}
-                    color="#FABB18"
-                    style={styles.bookmarkIcon}
-                  />
-                </View>
-              </Card>
-              <Card style={styles.card}>
-                <ProgressBar
-                  progress={0.25}
-                  color="#FABB18"
-                  style={styles.progressbar}
-                />
-                <View style={styles.cardInterior}>
-                  {/* <Card.Title title="Veggies Bitches!" subtitle="1 Day ago" /> */}
-                  <View>
-                    <Text style={styles.cardHeading}>Veggies Bitches!</Text>
-                    <Text style={styles.cardHeadingSub}>2 Years ago</Text>
-                  </View>
-                  <Icon1
-                    name="bookmark-outline"
-                    size={25}
-                    color="#FABB18"
-                    style={styles.bookmarkIcon}
-                  />
-                </View>
-              </Card>
-              <Card style={styles.card}>
-                <ProgressBar
-                  progress={0.5}
-                  color="#FABB18"
-                  style={styles.progressbar}
-                />
-                <View style={styles.cardInterior}>
-                  {/* <Card.Title title="Veggies Bitches!" subtitle="1 Day ago" /> */}
-                  <View>
-                    <Text style={styles.cardHeading}>Veggies Bitches!</Text>
-                    <Text style={styles.cardHeadingSub}>2 Years ago</Text>
-                  </View>
-                  <Icon1
-                    name="bookmark-outline"
-                    size={25}
-                    color="#FABB18"
-                    style={styles.bookmarkIcon}
-                  />
-                </View>
-              </Card>
+              <ListCard />
+              <ListCard />
+              <ListCard />
               <Button
                 mode="text"
                 color="#D7D7D7"
-                onPress={() => console.log('Pressed')}>
+                onPress={() => this.props.navigation.navigate('Lists')}>
                 View More
               </Button>
             </View>
@@ -149,66 +65,9 @@ class Home extends Component {
               <Icon name="plus" size={30} color="#FABB18" />
             </View>
             <View>
-              <Card style={styles.card}>
-                <ProgressBar
-                  progress={0.75}
-                  color="#FABB18"
-                  style={styles.progressbar}
-                />
-                <View style={styles.cardInterior}>
-                  {/* <Card.Title title="Veggies Bitches!" subtitle="1 Day ago" /> */}
-                  <View>
-                    <Text style={styles.cardHeading}>Wingies Yolo</Text>
-                    <Text style={styles.cardHeadingSub}>10 Lists</Text>
-                  </View>
-                  <Icon
-                    name="angle-right"
-                    size={27}
-                    color="#FABB18"
-                    style={styles.bookmarkIcon}
-                  />
-                </View>
-              </Card>
-              <Card style={styles.card}>
-                <ProgressBar
-                  progress={0.25}
-                  color="#FABB18"
-                  style={styles.progressbar}
-                />
-                <View style={styles.cardInterior}>
-                  {/* <Card.Title title="Veggies Bitches!" subtitle="1 Day ago" /> */}
-                  <View>
-                    <Text style={styles.cardHeading}>AtmaNirbhar NotCool</Text>
-                    <Text style={styles.cardHeadingSub}>15 Lists</Text>
-                  </View>
-                  <Icon
-                    name="angle-right"
-                    size={27}
-                    color="#FABB18"
-                    style={styles.bookmarkIcon}
-                  />
-                </View>
-              </Card>
-              <Card style={styles.card}>
-                <ProgressBar
-                  progress={0.5}
-                  color="#FABB18"
-                  style={styles.progressbar}
-                />
-                <View style={styles.cardInterior}>
-                  {/* <Card.Title title="Veggies Bitches!" subtitle="1 Day ago" /> */}
-                  <View>
-                    <Text style={styles.cardHeading}>App So Cool</Text>
-                    <Text style={styles.cardHeadingSub}>5 Lists</Text>
-                  </View>
-                  <Icon
-                    name="angle-right"
-                    size={25}
-                    color="#FABB18"
-                    style={styles.bookmarkIcon}
-                  />
-                </View>
-              </Card>
+              <GroupCard />
+              <GroupCard />
+              <GroupCard />
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -243,34 +102,6 @@ class Home extends Component {
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: Colors.lighter,
-  },
-  progressbar: {
-    borderRadius: 5,
-  },
-  card: {
-    marginLeft: 23,
-    marginRight: 23,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  bookmarkIcon: {
-    margin: 10,
-  },
-  cardHeading: {
-    fontSize: 20,
-    fontWeight: '700',
-    margin: 10,
-    marginBottom: 5,
-  },
-  cardHeadingSub: {
-    marginLeft: 10,
-    opacity: 0.5,
-    fontSize: 12,
-    marginBottom: 10,
-  },
-  cardInterior: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   profileMain: {
     flexDirection: 'row',
