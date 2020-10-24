@@ -50,7 +50,9 @@ class Lists extends Component {
             <TabButtons />
           </View>
           <ScrollView>
-            <ListCard />
+            <ListCard
+              onPressed={() => this.props.navigation.navigate('Items')}
+            />
             <ListCard />
             <ListCard />
             <ListCard />

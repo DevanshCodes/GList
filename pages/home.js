@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React, {Component} from 'react';
-import {FAB, Card, Button, ProgressBar} from 'react-native-paper';
+import {FAB, Button} from 'react-native-paper';
 import {
   SafeAreaView,
   StyleSheet,
@@ -74,6 +74,7 @@ class Home extends Component {
         <FAB.Group
           open={this.state.open}
           icon={'plus'}
+          theme={{colors: {accent: '#FABB18'}}}
           actions={[
             {
               icon: 'star',
@@ -92,7 +93,6 @@ class Home extends Component {
               // do something if the speed dial is open
             }
           }}
-          theme={{colors: {accent: '#FABB18'}}}
         />
       </View>
     );

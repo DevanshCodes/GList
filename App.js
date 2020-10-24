@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './pages/home';
 import Lists from './pages/lists';
-import Provider from 'react-native-paper';
+import Items from './pages/items';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +16,7 @@ const App: () => React$Node = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Lists" component={Lists} />
+        <Stack.Screen name="Items" component={Items} />
       </Stack.Navigator>
     </NavigationContainer>
   );

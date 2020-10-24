@@ -5,7 +5,7 @@ import {StyleSheet, View, Text} from 'react-native';
 
 function ListCard(props) {
   return (
-    <Card style={styles.card}>
+    <Card style={styles.card} onPress={props.onPressed}>
       <ProgressBar progress={0.75} color="#FABB18" style={styles.progressbar} />
       <View style={styles.cardInterior}>
         <View>
