@@ -1,8 +1,9 @@
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
+import {Picker} from '@react-native-community/picker';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Menu, Provider, Card, FAB, Button} from 'react-native-paper';
+import {Menu, Provider, Card, FAB, TextInput} from 'react-native-paper';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 class Items extends Component {
@@ -10,6 +11,7 @@ class Items extends Component {
     super(props);
     this.state = {
       openMenu: false,
+      language: '',
     };
     this.sheetRef = React.createRef();
   }
@@ -94,15 +96,40 @@ class Items extends Component {
             this.sheetRef = ref;
           }}
           height={300}
-          closeOnDragDown="true"
+          closeOnDragDown={true}
           openDuration={250}
-          customStyles={{
-            container: {
-              justifyContent: 'center',
-              alignItems: 'center',
-            },
-          }}>
-          <Text>Random Text</Text>
+          customStyles={{}}>
+          <View>
+            <TextInput
+              theme={{colors: {primary: '#FABB18'}}}
+              dense="true"
+              underlineColor="transparent"
+              style={styles.productInput}
+              label="Product Name"
+              // value={text}
+              // onChangeText={(text) => setText(text)}
+            />
+            <TextInput
+              theme={{colors: {primary: '#FABB18'}}}
+              dense="true"
+              underlineColor="transparent"
+              style={styles.productInput}
+              label="Price"
+              // value={text}
+              // onChangeText={(text) => setText(text)}
+            />
+            <Picker
+              style={styles.pickerStyle}
+              selectedValue={this.state.language}
+              style={{height: 50, width: 100}}
+              onValueChange={(itemValue, itemIndex) =>
+                this.setState({language: itemValue})
+              }>
+              <Picker.Item label="Packer" value="java" />
+              <Picker.Item label="Kg" value="js" />
+            </Picker>
+            <Text></Text>
+          </View>
         </RBSheet>
       </>
     );
@@ -110,11 +137,18 @@ class Items extends Component {
 }
 
 const styles = StyleSheet.create({
+  pickerStyle: {
+    padding: 20,
+  },
   fab: {
     position: 'absolute',
     margin: 16,
     right: 0,
     bottom: 0,
+  },
+  productInput: {
+    margin: 20,
+    color: '#FABB18',
   },
   head: {
     flexDirection: 'row',
