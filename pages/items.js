@@ -1,9 +1,9 @@
 import Icon from 'react-native-vector-icons/Ionicons';
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {Picker} from '@react-native-community/picker';
+import {Picker} from 'native-base';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Menu, Provider, Card, FAB, TextInput} from 'react-native-paper';
+import {Menu, Provider, Card, FAB, TextInput, Button} from 'react-native-paper';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 class Items extends Component {
@@ -99,7 +99,7 @@ class Items extends Component {
           closeOnDragDown={true}
           openDuration={250}
           customStyles={{}}>
-          <View>
+          <ScrollView>
             <TextInput
               theme={{colors: {primary: '#FABB18'}}}
               dense="true"
@@ -109,27 +109,65 @@ class Items extends Component {
               // value={text}
               // onChangeText={(text) => setText(text)}
             />
-            <TextInput
-              theme={{colors: {primary: '#FABB18'}}}
-              dense="true"
-              underlineColor="transparent"
-              style={styles.productInput}
-              label="Price"
-              // value={text}
-              // onChangeText={(text) => setText(text)}
-            />
-            <Picker
-              style={styles.pickerStyle}
-              selectedValue={this.state.language}
-              style={{height: 50, width: 100}}
-              onValueChange={(itemValue, itemIndex) =>
-                this.setState({language: itemValue})
-              }>
-              <Picker.Item label="Packer" value="java" />
-              <Picker.Item label="Kg" value="js" />
-            </Picker>
-            <Text></Text>
-          </View>
+            <View style={styles.secondRow}>
+              <TextInput
+                style={styles.priceInput}
+                left="true"
+                theme={{colors: {primary: '#FABB18'}}}
+                dense="true"
+                underlineColor="transparent"
+                label="Price"
+                value={this.state.text}
+                // onChangeText={(text) => setText(text)}
+              />
+              <Picker
+                style={styles.pickerStyle}
+                mode="dropdown"
+                iosIcon={<Icon name="arrow-down" />}
+                headerBackButtonText="Baaack!"
+                inlineLabel="random"
+                // selectedValue={this.state.selected}
+                // onValueChange={this.onValueChange.bind(this)}
+              >
+                <Picker.Item label="Per Unit" value="key0" />
+                <Picker.Item label="Total" value="key1" />
+              </Picker>
+            </View>
+            <View style={styles.secondRow}>
+              <TextInput
+                style={styles.priceInput}
+                left="true"
+                theme={{colors: {primary: '#FABB18'}}}
+                dense="true"
+                underlineColor="transparent"
+                label="Quantity"
+                value={this.state.text}
+                // onChangeText={(text) => setText(text)}
+              />
+              <Picker
+                style={styles.pickerStyle}
+                mode="dropdown"
+                iosIcon={<Icon name="arrow-down" />}
+                headerBackButtonText="Baaack!"
+                inlineLabel="random"
+                // selectedValue={this.state.selected}
+                // onValueChange={this.onValueChange.bind(this)}
+              >
+                <Picker.Item label="Packets" value="key0" />
+                <Picker.Item label="Kg" value="key1" />
+                <Picker.Item label="gm" value="key1" />
+                <Picker.Item label="tonne" value="key1" />
+              </Picker>
+            </View>
+            <Button
+              mode="contained"
+              icon="plus"
+              style={styles.addButton}
+              color="#FABB18"
+              onPress={() => console.log('add')}>
+              Add
+            </Button>
+          </ScrollView>
         </RBSheet>
       </>
     );
@@ -138,7 +176,14 @@ class Items extends Component {
 
 const styles = StyleSheet.create({
   pickerStyle: {
-    padding: 20,
+    marginRight: 10,
+    marginLeft: 20,
+    marginTop: 0,
+  },
+  priceInput: {
+    marginTop: 0,
+    margin: 20,
+    width: 170,
   },
   fab: {
     position: 'absolute',
@@ -146,9 +191,17 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
+  secondRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   productInput: {
     margin: 20,
     color: '#FABB18',
+  },
+  addButton: {
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   head: {
     flexDirection: 'row',
